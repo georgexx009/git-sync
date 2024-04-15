@@ -20,3 +20,6 @@ Add this to your `.zshrc`
 alias gs='~/.config/bin/git-sync'
 ```
 
+## TO DO
+- [ ] Reads a .git-sync file, and looks for var ON=true before running the sync
+- [ ] in the .git-sync file, add a var DAYS_TO_RESET=7 to set the days to reset the git history
