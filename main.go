@@ -11,8 +11,10 @@ import (
 )
 
 func main() {
+  fmt.Println("Starting git-sync")
   config, newContent := readConfigFile()
   if !config.on {
+    fmt.Println("Sync is off")
     return
   }
 	executeCommand("git", "add", ".")
