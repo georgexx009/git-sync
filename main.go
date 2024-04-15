@@ -43,7 +43,7 @@ type Config struct {
 
 type Validator struct {
   on bool
-  timeToReset bool
+  timesToReset bool
   count bool
 }
 
@@ -57,7 +57,7 @@ func readConfigFile() (Config, string){
   newContent := ""
 
 	scanner := bufio.NewScanner(file)
-  validator := Validator{on: false, timeToReset: false, count: false}
+  validator := Validator{on: false, timesToReset: false, count: false}
 	for scanner.Scan() {
 		str := scanner.Text()
 		elements := strings.Split(str, "=")
@@ -68,12 +68,12 @@ func readConfigFile() (Config, string){
       validator.on = true
 			config.on = value == "true"
       newContent += value + "\n"
-		case "TIME_TO_RESET":
+		case "TIMES_TO_RESET":
       valInt, err := strconv.Atoi(value)
       if err != nil {
         log.Fatalf("Error converting string to int: %v", err)
       }
-      validator.timeToReset = true
+      validator.timesToReset = true
 			config.timeToReset = valInt
       newContent += value + "\n"
 		case "COUNT":
@@ -94,7 +94,7 @@ func readConfigFile() (Config, string){
   if !validator.on {
     log.Fatalf("ON field is required")
   }
-  if !validator.timeToReset {
+  if !validator.timesToReset {
     log.Fatalf("TIME_TO_RESET field is required")
   }
   if !validator.count {
