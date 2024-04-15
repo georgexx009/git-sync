@@ -67,7 +67,7 @@ func readConfigFile() (Config, string){
 		case "ON":
       validator.on = true
 			config.on = value == "true"
-      newContent += value + "\n"
+      newContent += fmt.Sprintf("ON=%v\n", value)
 		case "TIMES_TO_RESET":
       valInt, err := strconv.Atoi(value)
       if err != nil {
@@ -75,7 +75,7 @@ func readConfigFile() (Config, string){
       }
       validator.timesToReset = true
 			config.timeToReset = valInt
-      newContent += value + "\n"
+      newContent += fmt.Sprintf("TIMES_TO_RESET=%v\n", value)
 		case "COUNT":
       valInt, err := strconv.Atoi(value)
       if err != nil {
@@ -83,7 +83,7 @@ func readConfigFile() (Config, string){
       }
       validator.count = true
 			config.count = valInt
-      newContent += value + "\n"
+      newContent += fmt.Sprintf("COUNT=%v\n", value)
 		}
 	}
 
